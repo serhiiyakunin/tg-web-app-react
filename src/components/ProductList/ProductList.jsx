@@ -1,6 +1,7 @@
 import React from 'react';
 import './ProductList.css';
 import ProductItem from '../ProductItem/ProductItem';
+import { useTelegram } from '../../hooks/useTelegram';
 
 const products = [
     { id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые' },
@@ -42,7 +43,7 @@ const onAdd = (product) => {
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
-
+    const { tg, queryId } = useTelegram();
 
     return (
         <div className={'list'}>
