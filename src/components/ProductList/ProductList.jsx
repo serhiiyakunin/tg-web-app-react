@@ -13,6 +13,12 @@ const products = [
     { id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая' },
 ]
 
+const getTotalPrice = (items = []) => {
+    return items.reduce((acc, item) => {
+        return acc += item.price
+    }, 0)
+}
+
 const onAdd = (product) => {
     const alreadyAdded = addedItems.find(item => item.id === product.id);
     let newItems = [];
@@ -28,6 +34,9 @@ const onAdd = (product) => {
         tg.MainButton.hide();
     } else {
         tg.MainButton.show();
+        tg.MainButton.setParams({
+            text: `Купити ${getTotalPrice(newItems)}`
+        })
     }
 }
 
